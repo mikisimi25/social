@@ -6,7 +6,7 @@ const UserListItem = ({data}) => {
 
     return (
         <li className={styles.userItem}>
-            <h5>{data.username}</h5>
+            <h5>{data}</h5>
         </li>
     )
 
