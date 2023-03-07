@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
+import { useFetchRepositories } from '../../hooks/useRepos';
 
 import UserListItem from './../../components/UserListItem/UserListItem';
-import * as UserService from './../../services/User.service.jsx';
 
 
 const Users = () => {
+    const { data, error, isLoading } = useFetchRepositories();
+    // const favoriteRepos = useFavoriteReposStore(
+    //   (state) => state.favoriteReposIds
+    // );
 
-  const { isLoading, error, data } = useQuery('users', UserService.getUser) 
-  
     if (isLoading) return 'Loading...'
   
     if (error) return 'An error has occurred: ' + error.message
@@ -21,7 +23,7 @@ const Users = () => {
               (data.length <= 0) ?
               <li className={'notFoundItem'}>USERS NOT FOUND</li>
               :
-              data.data.map( user => <UserListItem key={user} data={user} /> )
+              data.map( user => <UserListItem key={user} data={user} /> )
             }
           </ul>
         </div>
