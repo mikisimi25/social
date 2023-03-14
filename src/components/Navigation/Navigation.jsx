@@ -2,6 +2,7 @@ const Navigation = () => {
 
     const menuItems = [
       { name: 'Home', link: '/' },
+      { name: 'Profile', link: '/profile' },
       { name: 'Login', link: '/login' },
     ];
   
