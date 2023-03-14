@@ -4,27 +4,15 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.scss';
 import Users from './pages/Users/Users';
 import Login from './pages/Login/Login';
+import Navigation from './components/Navigation/Navigation';
 
 const App = () => {
 
-  const menuItems = [
-    { name: 'Home', link: '/' },
-    { name: 'Login', link: '/login' },
-  ];
-
   return (    
-    <div className="App container">
-      <div className="row justify-content-center pt-md-3">
+    <div>
+      <Navigation />
 
-        <nav>
-          <ul>
-            {menuItems.map((item) => (
-              <li key={item.name}>
-                <a href={item.link}>{item.name}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+      <main className="row justify-content-center pt-md-3">
         
         <BrowserRouter>
           <Routes>
@@ -32,7 +20,8 @@ const App = () => {
             <Route path="/login" element={ <Login /> } />
           </Routes>
         </BrowserRouter>
-      </div>
+
+      </main>
     </div>
   );
 }
